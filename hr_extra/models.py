@@ -2,11 +2,14 @@ from django.db import models
 
 class Fiscal(models.Model):
     nome = models.CharField(max_length=30, blank=False)
-    sala = models.IntegerField(blank=False)
+    regional = models.IntegerField(blank=False)
     email = models.EmailField(max_length=100, default='seuemail@gmail.com', blank=False)
 
     def __str__(self):
         return self.nome
+
+    def __str__(self):
+        return self.regional
 
     class Meta:
         verbose_name_plural = "Fiscal"
@@ -14,6 +17,7 @@ class Fiscal(models.Model):
 class Hora_extra(models.Model):
     nome = models.CharField(max_length=30, blank=False)
     data = models.DateField()
+    horario = (models.IntegerField(blank=False))
     descricao = models.CharField(max_length=30,blank=True)
 
 
