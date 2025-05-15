@@ -24,25 +24,16 @@ class Hora_extra(models.Model):
         verbose_name_plural = "Hora Extra"
 
 class Dia_da_semana(models.Model):
-    horario = models.ForeignKey(Horario, on_delete=models.CASCADE)
-    fiscal_responsavel= models.ForeignKey(Aula, on_delete=models.CASCADE)
+    nome = models.ForeignKey( Fiscal, on_delete=models.CASCADE)
+    fiscal_responsavel= models.ForeignKey(Fiscal, on_delete=models.CASCADE)
 
 
     def __str__(self):
         return f"{self.Dia_da_semana.horario} - {self.Dia_da_semana.fiscal_responsavel}"
 
     class Meta:
-        verbose_name_plural = "Presenças"
+        verbose_name_plural = "Dia_da_semana"
 
-class Certificado(models.Model):
-    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)
-    nome_coordenador_faculdade = models.CharField(blank=False)
-    nome_coordenador_colegio = models.CharField(blank=False)
-
-    def __str__(self):
-        return f"{self.nome_coordenador_faculdade}, {self.nome_coordenador_colegio}"
-    class Meta:
-        verbose_name_plural = "Certificados"
 
 class Administrador(models.Model):
     nome = models.CharField(blank=False)
