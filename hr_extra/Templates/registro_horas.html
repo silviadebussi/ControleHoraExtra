@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Fiscal</title>
+
+    <style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .navbar {
+        background-color: #007bff;
+    }
+
+    .navbar-brand, .nav-link {
+        color: white ;
+    }
+
+    .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    h1 {
+        color: #007bff;
+    }
+
+    .mb-3 {
+        margin-bottom: 15px;
+    }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container1">
+        <a class="navbar-brand" href="#">Registro de Horas</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}"> Registro de horas extras</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h1 class="mb-4">
+        Registro de Horas Extras
+    </h1>
+
+    <form method="post" action="{% url 'registrar_horas' %}" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.fiscal.label_tag }}
+            {{ form.fiscal }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+        </div>
+        <div class="mb-3">
+            {{ form.regional.label_tag }}
+            {{ form.regional }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Registrar Horas Extras Realizadas</button>
+    </form>
+</div>
+
+</body>
+</html>
