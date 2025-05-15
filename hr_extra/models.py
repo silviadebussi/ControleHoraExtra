@@ -17,12 +17,18 @@ class Fiscal(models.Model):
 class Hora_extra(models.Model):
     nome = models.CharField(max_length=30, blank=False)
     data = models.DateField()
-    horario = (models.IntegerField(blank=False))
+    horario = models.IntegerField(blank=False)
     descricao = models.CharField(max_length=30,blank=True)
+    prazo = models.CharField(max_length=30, blank=False)
 
 
     def __str__(self):
         return self.nome
+
+
+    def __str__(self):
+        return self.data
+
 
     class Meta:
         verbose_name_plural = "Hora Extra"
